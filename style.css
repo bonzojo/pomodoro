@@ -84,3 +84,25 @@ body {
         gap: 5px; 
     }
 }
+
+/* Full-screen overlay */
+.flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Initially transparent */
+    z-index: -1; /* Behind the content */
+}
+
+/* Flash red animation */
+@keyframes flash {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(255, 0, 0, 0.8); } /* Flash red */
+    100% { background-color: transparent; }
+}
+
+.flash-red {
+    animation: flash 1s infinite;
+}

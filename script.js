@@ -9,6 +9,7 @@ var pomoAlarm = new Howl({
 const timerBtn = document.getElementById('timerStart');
 const pauseBtn = document.getElementById('timerPause');
 const timerDisplay = document.querySelector('.timer');
+const flashOverlay = document.querySelector('.flash-overlay');
 
 let countdown;
 let timeLeft = 1 * 60;
@@ -37,6 +38,7 @@ function startTimer() {
             clearInterval(countdown);
             countdown = null;
             pomoAlarm.play();
+            triggerBackgroundFlash();
         }
     }, 1000);
 }
@@ -47,6 +49,14 @@ function pauseTimer() {
         countdown = null;
         isPaused = true; 
     }
+}
+
+function triggerBackgroundFlash() {
+    flashOverlay.classList.add('flash-red');
+
+    setTimeout(() => {
+        flashOverlay.classList.remove('flash-red'); 
+    }, 15000);
 }
 
 timerBtn.addEventListener('click', startTimer);
