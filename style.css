@@ -1,0 +1,46 @@
+body {
+    text-align: center;
+    background: rgb(11,8,71);
+    background: -moz-linear-gradient(180deg, rgba(11,8,71,1) 0%, rgba(13,73,131,1) 50%, rgba(0,212,255,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(11,8,71,1) 0%, rgba(13,73,131,1) 50%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(180deg, rgba(11,8,71,1) 0%, rgba(13,73,131,1) 50%, rgba(0,212,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b0847",endColorstr="#00d4ff",GradientType=1); 
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    margin: 0; 
+}
+
+.timer {
+    padding-top: 10%;
+    font-size: 200px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.icon-btn {
+    width: 100px; 
+    height: 100px;  
+    border: none;  
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.start-btn {
+    background-image: url('./buttons/start.png');
+}
+.pause-btn {
+    background-image: url('./buttons/pause.png');
+}

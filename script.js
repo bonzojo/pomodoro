@@ -1,16 +1,18 @@
 // Pomodoro Web App
-  
-// Initialize sound
+console.log("Icons courtesy of icons8");
+
 var pomoAlarm = new Howl({
     src: ['digital-alarm.mp3']
 });
 
 
 const timerBtn = document.getElementById('timerStart');
+const pauseBtn = document.getElementById('timerPause');
 const timerDisplay = document.querySelector('.timer');
 
-let countdown; // For storing setInterval
-let timeLeft = 1 * 60;
+let countdown;
+let timeLeft = 20 * 60;
+let isPaused = false; 
 
 function displayTimeLeft(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -19,23 +21,34 @@ function displayTimeLeft(seconds) {
     timerDisplay.textContent = display;
 }
 
-// Countdown
 function startTimer() {
-    // Prevent multiple intervals
+
     if (countdown) return;
 
-    countdown = setInterval(function() {
+    if (isPaused) {
+        isPaused = false;
+    }
 
+    countdown = setInterval(function () {
         timeLeft--;
-
         displayTimeLeft(timeLeft);
 
         if (timeLeft <= 0) {
             clearInterval(countdown);
+            countdown = null;
             pomoAlarm.play();
         }
     }, 1000);
 }
 
-// Start timer
+function pauseTimer() {
+    if (countdown) {
+        clearInterval(countdown);
+        countdown = null;
+        isPaused = true; 
+    }
+}
+
 timerBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+
