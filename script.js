@@ -39,6 +39,8 @@ function startTimer() {
             countdown = null;
             pomoAlarm.play();
             triggerBackgroundFlash();
+            timeLeft = 20 * 60;
+            displayTimeLeft(timeLeft);
         }
     }, 1000);
 }
