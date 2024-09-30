@@ -11,7 +11,7 @@ const pauseBtn = document.getElementById('timerPause');
 const timerDisplay = document.querySelector('.timer');
 
 let countdown;
-let timeLeft = 20 * 60;
+let timeLeft = 1 * 60;
 let isPaused = false; 
 
 function displayTimeLeft(seconds) {
