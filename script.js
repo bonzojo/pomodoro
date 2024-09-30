@@ -1,18 +1,41 @@
 // Pomodoro Web App
-
-/*
-
-A simple 20 minute rundown timer.
-Once the timer runs down. Triggers an alarm event
-
-*/
-
+  
+// Initialize sound
 var pomoAlarm = new Howl({
     src: ['digital-alarm.mp3']
-  });
+});
 
-  pomoAlarm.play() // Audio file play trigger
 
-  const timerBtn = document.getElementById('timerStart');
+const timerBtn = document.getElementById('timerStart');
+const timerDisplay = document.querySelector('.timer');
 
-  timerBtn.addEventListener('click', pomoAlarm.play());
+let countdown; // For storing setInterval
+let timeLeft = 1 * 60;
+
+function displayTimeLeft(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const display = `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+    timerDisplay.textContent = display;
+}
+
+// Countdown
+function startTimer() {
+    // Prevent multiple intervals
+    if (countdown) return;
+
+    countdown = setInterval(function() {
+
+        timeLeft--;
+
+        displayTimeLeft(timeLeft);
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            pomoAlarm.play();
+        }
+    }, 1000);
+}
+
+// Start timer
+timerBtn.addEventListener('click', startTimer);
