@@ -80,6 +80,12 @@ function generateClouds() {
         // Randomly position the cloud vertically
         cloudImg.style.top = `${Math.random() * 80}vh`; // Randomly place within the top half of the screen
 
+        //Give each cloud a random size
+        cloudImg.style.height = `${Math.random() * 10 + 25}%`;
+
+        // Give each cloud a random opacity
+        cloudImg.style.opacity = Math.random() * (0.6 - 0.2) + 0.2;
+
         // Animation & Speed
         const animationDuration = Math.random() * 180 + 30;
         cloudImg.style.animationDuration = `${animationDuration}s`;

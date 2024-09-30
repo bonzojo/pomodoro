@@ -22,7 +22,10 @@ body {
     font-size: 200px;
     font-family: 'Trebuchet MS', Arial, sans-serif;
     color: #fff;
+    -webkit-text-stroke: black 2px;
     margin-bottom: 20px;
+    z-index: 9999;
+
 }
 
 /* Button container */
@@ -43,11 +46,14 @@ body {
     cursor: pointer;
     background-repeat: no-repeat;
     background-color: transparent;
+    z-index: 9999;
 }
 
 .icon-btn:hover {
-    border: dashed 1px #fff;
-    border-radius: 50%;
+    filter: drop-shadow(10px 10px 2px #000000);
+}
+.icon-btn:active {
+    transform: translateY(4px);
 }
 
 .start-btn {
@@ -118,15 +124,13 @@ body {
 
 .cloud {
     position: absolute;
-    width: auto;
-    height: 15%;
-    opacity: 0.3; 
+    width: auto; 
     animation: moveClouds linear infinite;
 }
 
 @keyframes moveClouds {
     0% {
-        transform: translateX(-160vw); 
+        transform: translateX(-200vw); 
     }
     100% {
         transform: translateX(100vw); 
