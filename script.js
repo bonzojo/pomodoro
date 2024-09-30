@@ -5,14 +5,22 @@ var pomoAlarm = new Howl({
     src: ['digital-alarm.mp3']
 });
 
-
 const timerBtn = document.getElementById('timerStart');
 const pauseBtn = document.getElementById('timerPause');
 const timerDisplay = document.querySelector('.timer');
 const flashOverlay = document.querySelector('.flash-overlay');
+const cloudOverlay = document.querySelector('.cloud-overlay');
+
+const cloudArray = [
+    './clouds/cloud1.png',
+    './clouds/cloud2.png',
+    './clouds/cloud3.png',
+    './clouds/cloud4.png',
+    './clouds/cloud5.png'
+];
 
 let countdown;
-let timeLeft = 1 * 60;
+let timeLeft = 20 * 60;
 let isPaused = false; 
 
 function displayTimeLeft(seconds) {
@@ -23,8 +31,9 @@ function displayTimeLeft(seconds) {
 }
 
 function startTimer() {
-
     if (countdown) return;
+
+    generateClouds();
 
     if (isPaused) {
         isPaused = false;
@@ -61,6 +70,28 @@ function triggerBackgroundFlash() {
     }, 15000);
 }
 
+function generateClouds() {
+    const cloudCount = 9;
+    for (let i = 0; i < cloudCount; i++) {
+        const cloudImg = document.createElement('img');
+        cloudImg.src = cloudArray[Math.floor(Math.random() * cloudArray.length)];
+        cloudImg.classList.add('cloud');
+        
+        // Randomly position the cloud vertically
+        cloudImg.style.top = `${Math.random() * 80}vh`; // Randomly place within the top half of the screen
+
+        // Animation & Speed
+        const animationDuration = Math.random() * 180 + 30;
+        cloudImg.style.animationDuration = `${animationDuration}s`;
+
+        cloudOverlay.appendChild(cloudImg);
+
+        // Remove cloud after it completes its animation
+        cloudImg.addEventListener('animationend', () => {
+            cloudImg.remove();
+        });
+    }
+}
+
 timerBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
-

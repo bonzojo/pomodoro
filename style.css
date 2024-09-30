@@ -105,3 +105,30 @@ body {
 .flash-red {
     animation: flash 1s infinite;
 }
+
+.cloud-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    overflow: hidden; 
+}
+
+.cloud {
+    position: absolute;
+    width: auto;
+    height: 15%;
+    opacity: 0.3; 
+    animation: moveClouds linear infinite;
+}
+
+@keyframes moveClouds {
+    0% {
+        transform: translateX(-160vw); 
+    }
+    100% {
+        transform: translateX(100vw); 
+    }
+}
